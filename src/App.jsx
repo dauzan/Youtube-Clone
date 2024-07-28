@@ -1,41 +1,39 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function App() {
+const App = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    /**
-     * PUT ERROR HANDLER
-     * so when it come to error it doesn't call the api making traffic spike and exceed qouta limit
-     */
-    try {
-      axios.get('http://localhost:3000/youtube')
-      .then(response => {
-        const data = response.data.contents
-        .filter(item => item.type === "video")
-        .map(item => ({
-          thumbnails: item.video.thumbnails[0]["url"],
-          title: item.video.title
-        }));
-        setVideos(data);
-      })
-    } catch(error) {
-      console.error('There is an error:', error);
-    }
+    const fetchVideos = async () => {
+      try {
+        const response = await axios.get('https://youtube138.p.rapidapi.com/search/', {
+          params: {
+            key: process.env.RAPIDAPI_KEY,
+            q: 'React tutorials',
+            part: 'snippet',
+            type: 'video',
+          },
+        });
+        setVideos(response.data.items);
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    };
+
+    fetchVideos();
   }, []);
 
   return (
     <div>
-      {Array.isArray(videos) && videos.map((item, index) => (
-        <div key={index}>
-          <img src={item["thumbnails"]} alt={index} />
-          <h3 key={index}>{item["title"]}</h3>
+      {videos.map(video => (
+        <div key={video.id.videoId}>
+          <h2>{video.snippet.title}</h2>
+          <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
