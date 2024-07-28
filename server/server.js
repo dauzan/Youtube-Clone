@@ -5,13 +5,13 @@ const app = express();
 
 const searchName = 'food';
 
-//app.get('/youtube', (req, res) => {
-//    axios.get(`https://youtube.googleapis.com/youtube/v3/search?key=AIzaSyDZYZ51BQez_eLtZahx549HjXgcJglvU80&q=${searchName}&part=snippet`)
-//    .then(response => {
-//        res.set('Access-Control-Allow-Origin', '*')
-//        res.send(response.data.items)
-//    });
-//})
+app.get('/youtube', (req, res) => {
+    axios.get(`https://youtube.googleapis.com/youtube/v3/search?key=AIzaSyDZYZ51BQez_eLtZahx549HjXgcJglvU80&q=${searchName}&part=snippet`)
+    .then(response => {
+        res.set('Access-Control-Allow-Origin', '*')
+        res.send(response.data.items)
+    });
+})
 
 const options = {
     method: 'GET',
