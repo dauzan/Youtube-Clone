@@ -1,0 +1,84 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+body {
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #222222;
+}
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+#sidebar h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 40px 0;
+}
+
+#sidebar div {
+  border-bottom: #363636;
+  border-bottom-style: solid;
+  padding: 0 50px;
+}
+
+#sidebar div ul li {
+  display: flex;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #ffffff;
+  list-style: none;
+  margin: 10px 0;
+}
+
+#sidebar div ul li i {
+  display: inherit;
+  align-self: center;
+  margin-right: 5px;
+}
+
+#sidebar div h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #363636;
+}
+
+#root div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#root div div {
+  display: flex;
+  width: 360px;
+  background-color: #4d4d4d;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+#root div div:hover {
+  background-color: #595959;
+}
+
+#root div div img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#root div div h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-left: 5px;
+}
