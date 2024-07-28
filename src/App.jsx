@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const options = {
+  method: 'GET',
+  url: 'https://youtube138.p.rapidapi.com/search/',
+  params: {
+    q: 'food',
+    hl: 'en',
+  },
+  headers: {
+    'x-rapidapi-key': '61c9f783e3msh16c3d1965101ae2p188f73jsn1e39744d79e9',
+    'x-rapidapi-host': 'youtube138.p.rapidapi.com'
+  }
+};
+
+const resaxios = await axios.request(options);
+
 const App = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get('https://youtube138.p.rapidapi.com/search/', {
-          params: {
-            key: process.env.RAPIDAPI_KEY,
-            q: 'React tutorials',
-            part: 'snippet',
-            type: 'video',
-          },
-        });
+        const response = await axios.get(resaxios);
         setVideos(response.data.items);
       } catch (error) {
         console.error('Error fetching videos:', error);
