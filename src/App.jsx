@@ -10,7 +10,7 @@
     useEffect(() => {
       const fetchVideos = async () => {
         try {
-          const response = await axios.get(import.meta.env.VITE_APP_API_URL, {
+          const response = await axios.get(`${import.meta.env.VITE_APP_API_URL}`, {
             params: {
               part: 'snippet',
               q: query,
