@@ -14,7 +14,7 @@
             params: {
               part: 'snippet',
               q: query,
-              maxResults: 10,
+              maxResults: 100,
               key: apikey
             }
           });
@@ -32,8 +32,8 @@
         {videos.length > 0 ? (
           videos.map(video => (
             <div key={video.id.videoId || video.etag}>
+              <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} /> 
               <h2>{video.snippet.title}</h2>
-              <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
             </div>
           ))
         ) : (
