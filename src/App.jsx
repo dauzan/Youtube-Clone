@@ -32,7 +32,7 @@
         {videos.length > 0 ? (
           videos.map(video => (
             <div key={video.id.videoId || video.etag}>
-              <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} /> 
+              <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} /> 
               <h2>{video.snippet.title}</h2>
             </div>
           ))
